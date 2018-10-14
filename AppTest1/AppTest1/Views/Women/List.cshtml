@@ -1,0 +1,44 @@
+@model IEnumerable<WomenRowModel>
+
+<h1>Women List</h1>
+
+<div class="text-right">
+    <a asp-controller="Women" asp-action="Edit" class="btn btn-primary">New Women</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back To Home</a>
+</div> 
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>LastName</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null && Model.Count() > 0)
+        {
+            @foreach(var m in Model)
+            {
+                <tr>
+                    <td>@m.Name</td>
+                    <td>@m.LastName</td>
+                    <td><a asp-controller="Women"
+                            asp-action="Edit"
+                            asp-route-id="@m.Id"
+                            class="text-primary">Edit</a></td>
+                    <td><a asp-controller="Women"
+                            asp-action="Delete"
+                            asp-route-id="@m.Id"
+                            class="text-danger">Delete</a></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">No Women here</td>
+            </tr>
+        }
+    </tbody>
+</table>

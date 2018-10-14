@@ -1,0 +1,14 @@
+@model MormonsPartner
+
+<h1>Delete Men</h1>
+
+<form method="POST" asp-controller="Partners" asp-action="ConfirmDelete" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <p>Are you sure to remove the couple '@Model.Man.Name - @Model.Woman.Name)'?</p>
+    </div>
+    
+    <div class="form-group">
+        <a asp-controller="Partners" asp-action="List" class="btn btn-default">Undo</a>
+        <input type="submit" class="btn btn-danger" value="Confirm" />
+    </div>
+</form>
